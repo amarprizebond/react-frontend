@@ -1,7 +1,20 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 function Footer(props) {
+
+    let [contributers, setContributers] = useState([]);
+
+    useEffect(() => {
+
+        let url = 'https://api.github.com/repos/amarprizebond/react-frontend/contributors?per_page=5&anon=1';
+        axios.get(url)
+            .then(function (response) {
+                setContributers(response.data);
+            });
+
+    }, []);
 
 	return (
         <footer>
@@ -41,24 +54,16 @@ function Footer(props) {
                             রেখেছেন, তাদের সকলের প্রতি কৃতজ্ঞতা।
                         </p>
                         <ul className="uk-list">
-                            <li><a href='https://github.com/techchitchatbd/prizebond' target="_blank" rel="noopener noreferrer">গিটহাব লিংক</a></li>
+                            <li><a href='https://github.com/amarprizebond/' target="_blank" rel="noopener noreferrer">গিটহাব লিংক</a></li>
                         </ul>
                         <p>
-                            <a className="contributor" href='https://github.com/techchitchatbd' target="_blank" rel="noopener noreferrer">
-                                <img src="https://avatars3.githubusercontent.com/u/54138928?s=460&v=4" alt="techchitchatbd" width="32" height="32" />
-                            </a>
-                            <a className="contributor" href='https://github.com/techchitchatbd' target="_blank" rel="noopener noreferrer">
-                                <img src="https://avatars3.githubusercontent.com/u/54138928?s=460&v=4" alt="techchitchatbd" width="32" height="32" />
-                            </a>
-                            <a className="contributor" href='https://github.com/techchitchatbd' target="_blank" rel="noopener noreferrer">
-                                <img src="https://avatars3.githubusercontent.com/u/54138928?s=460&v=4" alt="techchitchatbd" width="32" height="32" />
-                            </a>
-                            <a className="contributor" href='https://github.com/techchitchatbd' target="_blank" rel="noopener noreferrer">
-                                <img src="https://avatars3.githubusercontent.com/u/54138928?s=460&v=4" alt="techchitchatbd" width="32" height="32" />
-                            </a>
-                            <a className="contributor" href='https://github.com/techchitchatbd' target="_blank" rel="noopener noreferrer">
-                                <img src="https://avatars3.githubusercontent.com/u/54138928?s=460&v=4" alt="techchitchatbd" width="32" height="32" />
-                            </a>
+                            {contributers.map((val, index) => {
+                                return (
+                                    <Link className="contributor" key={index} to={{ pathname: val.html_url }} target="_blank" rel="noopener noreferrer">
+                                        <img src={val.avatar_url} alt={val.login} width="32" height="32" />
+                                    </Link>
+                                );
+                            })}
                         </p>
                     </div>
                 </div>
