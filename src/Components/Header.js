@@ -29,7 +29,7 @@ function Header(props) {
 
             <div className="header-right uk-navbar-right" uk-navbar="true">
                 <ul className="main-menu uk-navbar-nav">
-                    <MenuResults />
+                    <MenuResults position="header" />
                     <MenuAccount />
                 </ul>
             </div>

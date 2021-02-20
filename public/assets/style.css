@@ -490,6 +490,17 @@ footer .menu-col h3 {
 	color: #316544;
 	font-size: 1.2rem;
 }
+footer .result-list {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+.result-list.uk-list>li:nth-child(n+2) {
+	margin-top: 0;
+}
+footer .result-list > * {
+	margin: 0 5px 5px 5px;
+}
 .menu-desc .uk-icon-link {
 	margin-left: 5px;
     color: #316544;

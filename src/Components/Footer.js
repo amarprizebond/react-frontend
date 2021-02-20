@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
+import MenuResults from './MenuResults';
+
 function Footer(props) {
 
     let [contributers, setContributers] = useState([]);
@@ -45,6 +47,7 @@ function Footer(props) {
                             <li><Link to='/page/prizebond-ki'>প্রাইজবন্ড কি?</Link></li>
                             <li><Link to='/page/goponiyota-niti'>গোপনীয়তা নীতি</Link></li>
                         </ul>
+                        <MenuResults />
                     </div>
                     <div className="menu-col menu-project uk-width-1-4@s">
                         <h3>প্রকল্প সম্পর্কিত</h3>
