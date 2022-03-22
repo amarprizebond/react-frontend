@@ -38,7 +38,9 @@ function Footer(props) {
                         </p>
                         <p>
                             আমার প্রাইজবন্ডকে ফেইসবুকে অনুসরণ করুন 
-                            <a href="https://www.facebook.com/amarprizebond/" className="uk-icon-link" uk-icon="facebook" target="_blank" rel="noopener noreferrer"></a>
+                            <a href="https://www.facebook.com/amarprizebond/" className="uk-icon-link" target="_blank" rel="noopener noreferrer">
+                                <span uk-icon="facebook"></span>
+                            </a>
                         </p>
                     </div>
                     <div className="menu-col menu-links uk-width-1-4@s">

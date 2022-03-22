@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import validator from 'validator';
 import UIkit from 'uikit';
 import axios from 'axios';
@@ -6,17 +6,33 @@ import axios from 'axios';
 import { UserContext } from '../Context/UserContext';
 import Alert from '../Components/Alert';
 import { setTokenHeader } from '../Helper/TokenHelper';
-import { numberSeries } from '../Helper/SeriesHelper';
 import { sanitizeNumber } from '../Helper/NumberHelper';
 
 function ModalAddNew() {
 
     const [newSeries, setNewSeries] = useState(0);
     const [newNumber, setNewNumber] = useState('');
+    const [numberSeries, setNumberSeries] = useState([]);
     const [errorMessages, setErrorMessages] = useState([]);
     const [successMessages, setSuccessMessages] = useState([]);
 
     const {user, total, setTotal, numbers, setNumbers} = useContext(UserContext);
+
+    const fetchData = () => {
+
+        let url = `${process.env.REACT_APP_API_URL}/series`;
+        axios.get(url)
+            .then(function (response) {
+                setNumberSeries(response.data.data);
+                setNewSeries(1);
+            });
+    }
+
+    useEffect(() => {
+
+        fetchData();
+
+    }, []);
 
     UIkit.util.on('#add-new-number', 'beforehide', function (e) {
         setErrorMessages([]);
@@ -126,7 +142,7 @@ function ModalAddNew() {
                                     {
                                         numberSeries.map((item, index) => {
                                             return(
-                                                <option key={index} value={index}>{item}</option>
+                                                <option key={index} value={item.serial}>{item.label}</option>
                                             )
                                         })
                                     }

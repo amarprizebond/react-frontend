@@ -44,13 +44,13 @@ function Pagination(props) {
                 pagination.map((e, i) => {
 
                     let paginListClassName = '';
-                    if (e == 0) {
+                    if (e === 0) {
                         paginListClassName = 'uk-disabled';
-                    } else if (e == currentPage) {
+                    } else if (e === currentPage) {
                         paginListClassName = 'uk-active';
                     }
                     
-                    if (e == 0) {
+                    if (e === 0) {
                         return (
                             <li key={i} className={paginListClassName}><span>&hellip;</span></li>
                         );

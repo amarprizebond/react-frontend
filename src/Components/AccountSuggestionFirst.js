@@ -4,7 +4,7 @@ import { GetUserStat, SetUserStat } from '../Helper/LocalStorage';
 
 function AccountSuggestionFirst(props) {
 
-    const [closed, setClosed] = useState(false);
+    const [setClosed] = useState(false);
     const userstat = GetUserStat();
 
     const handleSubmit = (e) => {
