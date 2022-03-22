@@ -78,7 +78,7 @@ function ModalAddNew() {
             axios.post(addNumberUrl, addNumberUrlData)
                 .then(function (response) {
                     
-                    const { id, user_id, series, number } = response.data;
+                    const { id, user_id, series, label, number } = response.data;
 
                     let newTotal = total + 1;
                     let newNumbers = numbers;
@@ -86,6 +86,7 @@ function ModalAddNew() {
                         id,
                         user_id,
                         series,
+                        label,
                         number,
                         is_checked: 0,
                         result_numbers_id: null
@@ -106,6 +107,8 @@ function ModalAddNew() {
                         setErrorMessages(['এই প্রাইজবন্ডটি আপনি ইতিমধ্যে যোগ করেছেন।']);
                     } else if (errorCode === 'INVALID_INPUT_DATA') {
                         setErrorMessages(['আপনার প্রদত্ত প্রাইজবন্ড নম্বরটি সঠিক নয়। প্রাইজবন্ড নম্বর ১ হতে ৯৯৯৯৯৯৯ পর্যন্ত হতে পারে।']);
+                    } else if (errorCode === 'INVALID_SERIES') {
+                        setErrorMessages(['আপনার প্রদত্ত সিরিজটি সঠিক নয়।']);
                     } else {
                         // unknown error. log and investigate.
                         console.log('unknown error. log and investigate.');
@@ -117,7 +120,7 @@ function ModalAddNew() {
     }
 
     const resetForm = () => {
-        setNewSeries(0);
+        setNewSeries(1);
         setNewNumber('');
     }
 
