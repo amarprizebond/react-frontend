@@ -133,7 +133,7 @@ function TableUserNumbers(props) {
                     </thead>
                     <tbody>
                         {numbers.map(( val, index ) => {
-                            return <TableUserNumbersRow key={index} id={val.id} series={val.label} number={val.number} prize={val.result_numbers_id || false} />
+                            return <TableUserNumbersRow key={index} id={val.id} series={val.serial} seriesLabel={val.label} number={val.number} prize={val.result_numbers_id || false} />
                         })}
                     </tbody>
                 </table>

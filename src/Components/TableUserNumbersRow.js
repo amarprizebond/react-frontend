@@ -68,7 +68,7 @@ function TableUserNumbersRow(props) {
 
     return (
         <tr className={ props.prize ? 'uk-alert-success' : '' }>
-            <td className={ confirmClicked ? 'series hidden' : 'series' }>{props.series}</td>
+            <td className={ confirmClicked ? 'series hidden' : 'series' }>{props.seriesLabel}</td>
             <td className={ confirmClicked ? 'number hidden' : 'number' }>{bengaliNumber(numeral(props.number).format('0000000'))}</td>
             <td className="action" colSpan={ confirmClicked ? 3 : null }>
                 <div className={ confirmClicked ? 'hidden' : '' }>
